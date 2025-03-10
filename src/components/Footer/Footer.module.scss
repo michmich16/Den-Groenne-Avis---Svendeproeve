@@ -1,0 +1,13 @@
+@import '../../assets/helper/Helper.module.scss';
+
+footer {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    height: 196px;
+    background-color: $lime;
+    div{
+        h4{
+            color: $white;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+@import '../../assets/helper/Helper.module.scss';
+
+nav{
+    display: flex;
+  
+    button{
+        width: 140px;
+        height: 45px;
+        font-size: 12px;
+        color: $white;
+        background-color: $lime;
+        border: none;
+        margin:0 2rem;
+    }
+    span{
+        img{
+            padding: 0 0.5rem;
+            width: 37px;
+            height: 36px;
+            }
+    }
+}

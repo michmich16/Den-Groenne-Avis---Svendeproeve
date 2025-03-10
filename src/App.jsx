@@ -17,7 +17,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path={"/"} element={<MainLayout />} />
+          <Route path={"/"} element={<MainLayout />} >
           <Route index element={<HomePage />} />
           <Route path={`/kategori/:category`} element={<CategoryPage />} />
           <Route path={`/login`} element={<LoginPage />} />
@@ -25,6 +25,7 @@ function App() {
           <Route path={`/produkt/:id`} element={<ProductPage />} />
           <Route path={`/min-konto`} element={<AccountPage />} />
           <Route path={`/*`} element={<NoPage />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>

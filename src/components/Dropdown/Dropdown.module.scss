@@ -1,0 +1,9 @@
+@import '../../assets/helper/Helper.module.scss';
+
+select {
+    display: flex;
+    width: 200px;
+    height: 45px;
+    border: 2px solid $lime;
+    padding: 0.5rem;
+}
