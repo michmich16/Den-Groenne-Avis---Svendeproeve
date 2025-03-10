@@ -29,6 +29,7 @@ export const HomePage = () => {
                   key={data.id}
                   img={data.image}
                   name={data.name}
+                  link={data.slug}
                 />
               ))}
         </GridContainer>
@@ -46,6 +47,7 @@ export const HomePage = () => {
                   key={data.id}
                   img={data.category_image}
                   name={data.name}
+       
                 />
               ))}
         </GridContainer>

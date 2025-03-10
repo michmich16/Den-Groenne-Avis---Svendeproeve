@@ -19,10 +19,10 @@ function App() {
         <Routes>
           <Route path={"/"} element={<MainLayout />} >
           <Route index element={<HomePage />} />
-          <Route path={`/kategori/:category`} element={<CategoriesPage />} />
+          <Route path={`/products/category/:id`} element={<CategoriesPage />} />
           <Route path={`/login`} element={<LoginPage />} />
           <Route path={`/signup`} element={<SignUpPage />} />
-          <Route path={`/produkt/:id`} element={<ProductPage />} />
+          <Route path={`/products/:id`} element={<ProductPage />} />
           <Route path={`/min-konto`} element={<AccountPage />} />
           <Route path={`/*`} element={<NoPage />} />
           </Route>
