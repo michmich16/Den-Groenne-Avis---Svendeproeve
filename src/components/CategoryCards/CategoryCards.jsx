@@ -1,7 +1,11 @@
 import React from 'react'
+import s from './CategoryCards.module.scss'
 
-export const CategoryCards = () => {
+export const CategoryCards = ({ name, img }) => {
   return (
-    <div>CategoryCards</div>
+    <figure className={s.categoryCardStyle}>
+      <figcaption>{name}</figcaption>
+      <img src={img} alt="" />
+    </figure>
   )
 }

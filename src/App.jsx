@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MainLayout } from './layout/MainLayout';
 import { HomePage } from './pages/HomePage';
-import { CategoryPage } from './pages/CategoryPage';
+import { CategoriesPage } from './pages/CategoriesPage';
 import { ProductPage } from './pages/ProductPage';
 import { NoPage } from './pages/NoPage';
 import { LoginPage } from './pages/LoginPage';
@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route path={"/"} element={<MainLayout />} >
           <Route index element={<HomePage />} />
-          <Route path={`/kategori/:category`} element={<CategoryPage />} />
+          <Route path={`/kategori/:category`} element={<CategoriesPage />} />
           <Route path={`/login`} element={<LoginPage />} />
           <Route path={`/signup`} element={<SignUpPage />} />
           <Route path={`/produkt/:id`} element={<ProductPage />} />

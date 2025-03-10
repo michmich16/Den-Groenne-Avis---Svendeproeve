@@ -3,7 +3,7 @@ import s from './ProductCards.module.scss'
 
 export const ProductCards = ({ name, img }) => {
   return (
-    <figure>
+    <figure className={s.productCardStyle}>
       <img src={img} alt="" />
       <figcaption>{name}</figcaption>
     </figure>

@@ -1,7 +1,14 @@
 import React from 'react'
+import s from './Banner.module.scss'
 
-export const Banner = () => {
+export const Banner = ({ img, title, text }) => {
   return (
-    <div>Banner</div>
+    <figure className={s.bannerStyle}>
+      <img src={img} alt="" />
+      <figcaption>
+        <h2>{title}</h2>
+        <p>{text}</p>
+      </figcaption>
+    </figure>
   )
 }

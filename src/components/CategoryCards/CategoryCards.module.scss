@@ -1,0 +1,28 @@
+@import '../../assets/helper/Helper.module.scss';
+
+.categoryCardStyle {
+    height: 200px;
+    width: 200px;
+    position: relative;
+    cursor: pointer;
+
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    figcaption {
+        font-size: 14px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: $lime;
+        color: $white;
+        text-align: center;
+        padding: 8px 0;
+        opacity: 1;
+        text-decoration: underline;
+    }
+}
