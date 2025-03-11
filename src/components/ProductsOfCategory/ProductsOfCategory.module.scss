@@ -1,0 +1,9 @@
+@import '../../assets/helper/Helper.module.scss';
+
+.productsOfCategoryStyle{
+    display: flex;
+    flex-direction: column;
+    img{
+        width: 100%;
+    }
+}
