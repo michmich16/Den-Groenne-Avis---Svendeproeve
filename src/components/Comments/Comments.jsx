@@ -1,7 +1,14 @@
-import React from 'react'
+import s from './Comments.module.scss';
 
-export const Comments = () => {
+export const Comments = ({ name, text }) => {
   return (
-    <div>Comments</div>
+    <>
+      <div>
+        <p>{name}</p>
+        <span>
+          <p>{text}</p>
+        </span>
+      </div>
+    </>
   )
 }

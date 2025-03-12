@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 import { InputField } from '../components/InputField/InputField'
 import { useNavigate } from 'react-router-dom'
 import { Donation } from '../components/Donation/Donation'
@@ -13,41 +13,41 @@ export const SignUpPage = () => {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [zip, setZip] = useState("");
+  const [error, setError] = useState("");
+  const [signUpMessage, setSignUpMessage] = useState("");
+
   const navigate = useNavigate();
 
   function submitData() {
     const body = new URLSearchParams();
-    body.append("username", email); 
+    body.append("email", email);
     body.append("password", password);
-    body.append("firstname", firstname); 
+    body.append("firstname", firstname);
     body.append("lastname", lastname);
-    body.append("address", address); 
+    body.append("address", address);
     body.append("city", city);
-    body.append("zipcode", zip); 
+    body.append("zipcode", zip);
 
     const options = {
-      method: "POST", //post method
+      method: 'POST',
       body: body,
+      redirect: 'follow'
     };
 
     fetch("http://localhost:4242/users", options)
-      .then((res) => res.json())
+      .then(response => response.text())
+      .then(result => console.log(result))
       .then((data) => {
-        if (data.data.access_token) {
-          setUserData(data.data); // Save user data
-          setUserToken(data.data.access_token); // Save the token
-          setLoginMessage("Du er nu logget ind");
-          setError(""); // Clear any previous error
-        } else {
-          setLoginMessage("Forkert brugernavn eller password");
-        }
-        console.log(data);
+        console.log("User created successfully:", data);
+        setSignUpMessage("Du har ny oprettet en konto")
+        // navigate("/login"); // Redirect to login
       })
-      .catch(() => {
-        setError("Noget gik galt, prøv igen senere");
-        setLoginMessage(""); // Clear any previous message
+      .catch((error) => {
+        console.error("API request error: ", error);
+        setError("Hov! Der skete en fejl. Prøv igen senere")
       });
   }
+
 
   return (
     <>
@@ -105,7 +105,9 @@ export const SignUpPage = () => {
         </form>
         <p>Har du allerede en konto hos os? Klik <a onClick={() => navigate('/login')}>her</a> for at vende tilbage til login</p>
         <input type="checkbox" />
-        <button>Opret</button>
+        <button onClick={submitData}>Opret</button>
+        {error && <p>{error}</p>}
+        {signUpMessage && <p>{signUpMessage}</p>}
         <GridContainer columns="1fr 1fr">
           <Donation
             img='./images/banner_image2.jpg'

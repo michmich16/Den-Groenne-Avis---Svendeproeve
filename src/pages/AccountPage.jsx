@@ -12,7 +12,8 @@ export const AccountPage = () => {
       {userToken ? (
         <div>AccountPage logged in</div>
       ) : (
-        <div>AccountPage not logged in</div>
+        <div><p>AccountPage not logged in</p>
+        <p>Tryk <a href="">her</a> for at gå til en login side</p></div>
       )}
     </>
   )
