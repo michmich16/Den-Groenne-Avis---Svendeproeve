@@ -24,7 +24,7 @@ export const CategoriesPage = () => {
                 price={data?.price}
                 name={data?.name}
                 description={data?.description}
-                link={`/products/${data.slug}`}
+                link={`/products/${data?.slug}`}
               />
             ))}
           </GridContainer>

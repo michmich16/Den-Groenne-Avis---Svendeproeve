@@ -11,10 +11,7 @@ export const CategoryFilter = () => {
             <section>
                 <h5>Alle Kategorier</h5>
                 {!categoryFilterIsLoading && categoryFilterData?.data?.map((category) => (
-                    <li 
-                        key={category.id} // Ensure unique keys for the list items
-                        onClick={() => navigate(`/products/category/${category.slug}`)} // Use the correct property
-                    >
+                    <li key={category.id} onClick={() => navigate(`/products/category/${category.slug}`)}>
                         {category.name}
                     </li>
                 ))}
