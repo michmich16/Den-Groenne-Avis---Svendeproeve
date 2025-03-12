@@ -5,6 +5,8 @@ import { UserContext } from "../context/UserContext";
 import { MarginContainer } from "../components/MarginContainer/MarginContainer";
 import { SectionTitle } from "../components/SectionTitle/SectionTitle"
 import { useNavigate } from "react-router-dom";
+import { Donation } from '../components/Donation/Donation';
+import { GridContainer } from '../components/GridContainer/GridContainer';
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -42,13 +44,22 @@ export const LoginPage = () => {
       });
   }
 
+  
+
+  const logOut = () => {
+    setUserData(null);
+    setUserToken(null);
+    sessionStorage.removeItem("userData");
+    sessionStorage.removeItem("userToken");
+  };
+
   const navigate = useNavigate();
   return (
     <MarginContainer>
       {userToken ? ( //turnary operator, hvis userToker er der så vis Admininstator component ellers vis login form med InputBox
         <div>
-          <h2>Du er nu logget ind <button>Logud</button></h2>
-          <button onClick={() =>{navigate('/min-konto')}}>Gå til din konto</button>
+          <h2>Du er nu logget ind <button onClick={logOut}>Logud</button></h2>
+          <button onClick={() => { navigate('/min-konto') }}>Gå til din konto</button>
         </div>
       ) : (
         <>
@@ -78,6 +89,22 @@ export const LoginPage = () => {
           {loginMessage && <p className={s.loginMessage}>{loginMessage}</p>}
         </>
       )}
+      <GridContainer columns="1fr 1fr">
+        <Donation
+          img='./images/banner_image2.jpg'
+          title="Donationer til Dato"
+          text="Sammen med dig har vi siden starten indsamlet:"
+          money="452.231,50 kr"
+          ending="Tak fordi du handler med omtanke for klimaet"
+        />
+        <Donation
+          img='./images/banner_image3.jpg'
+          title="Donationer i år"
+          text="Sammen med dig har vi i år indsamlet:"
+          money="112.452,75 kr"
+          ending="Tak fordi du handler med omtanke for klimaet"
+        />
+      </GridContainer>
     </MarginContainer>
   )
 }

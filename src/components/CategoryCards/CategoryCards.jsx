@@ -7,7 +7,7 @@ export const CategoryCards = ({ name, img, link }) => {
     <figure className={s.categoryCardStyle} >
       <NavLink  to={link}>
       <figcaption>{name}</figcaption>
-      <img src={img} alt="" />
+      <img src={img} alt={name} />
       </NavLink>
     </figure>
   )

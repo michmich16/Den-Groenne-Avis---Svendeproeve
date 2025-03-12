@@ -9,7 +9,7 @@ export const NavBar = () => {
   return (
     <nav>
       <Dropdown />
-      <button>opret annonce</button>
+      <button onClick={() => navigate(`/ny-annoncer`)}>opret annonce</button>
       <span>
         <img src="./icons/mailIcon.png" alt="" />
         <img src="./icons/infoIcon.png" alt="" />
