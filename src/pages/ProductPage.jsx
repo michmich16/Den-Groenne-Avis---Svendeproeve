@@ -14,13 +14,13 @@ export const ProductPage = () => {
   const { slug } = useParams()
   const { isLoading: productIsLoading, data: productData, error: productError } = useGet(`http://localhost:4242/products/${slug}`)
   const [newComment, setNewComment] = useState("")
-  const { userToken, setUserData, setUserToken } = useContext(UserContext);
-  const productID = productData?.data?.id
+  const { userToken, userData } = useContext(UserContext);
+  const productID = productData?.data?.id;
   console.log(productData);
 
   function submitComment() {
     const body = new URLSearchParams();
-    body.append("comment", newComment); //henter email fra email usestate
+    body.append("comment", newComment);
 
     const options = {
       method: "POST",
@@ -29,6 +29,18 @@ export const ProductPage = () => {
     }
 
     fetch(`http://localhost:4242/comment/${productID}`, options)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
+
+  function deleteComment(id) {
+    const options = {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${userToken}` },
+    };
+
+    fetch(`http://localhost:4242/comment/${id}`, options)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -54,13 +66,19 @@ export const ProductPage = () => {
           action={setNewComment}
         />
         <button onClick={() => submitComment()}>send</button>
-        {!productIsLoading && productData?.data?.comments?.map((comment) => (
-          <Comments
-            key={comment.id}
-            text={comment.comment} 
-            name={`${comment.user?.firstname} (${comment.createdAt})`}
-          />
-        ))}
+        {!productIsLoading &&
+          productData?.data?.comments?.map((item) => (
+            <div key={item.id}>
+              <Comments
+                text={item.comment}
+                name={`${item.user?.firstname} (${new Date(item.createdAt).toLocaleString()})`}
+              />
+                <button onClick={() => deleteComment(item.id)}>slet kommentar</button>
+            </div>
+          ))}
+
+
+
       </MarginContainer>
     </>
   )

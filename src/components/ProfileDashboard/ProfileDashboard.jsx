@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { InputField } from "../InputField/InputField";
+import s from './ProfileDashboard.module.scss';
 
-export const Dashboard = () => {
+export const ProfileDashboard = () => {
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
     const [address, setAddress] = useState("");
@@ -17,7 +17,6 @@ export const Dashboard = () => {
     function updateUser() {
         const body = new URLSearchParams();
         body.append("email", email);
-        body.append("password", password);
         body.append("firstname", firstname);
         body.append("lastname", lastname);
         body.append("address", address);
@@ -76,24 +75,19 @@ export const Dashboard = () => {
 
     return (
         <>
-            <div>
-                <button>Min Profil</button>
-                <button>Mine Annoncer</button>
-            </div>
             <div id="profileDashboard">
                 <form>
-                    <InputField type="email" placeholder="Din email..." name="Email" id="emailField" action={setEmail} />
-                    <InputField type="password" placeholder="Din password..." name="password" id="passwordField" action={setPassword} />
                     <InputField type="text" placeholder="Din fornavn..." name="Firstname" id="firstnameField" action={setFirstname} />
                     <InputField type="text" placeholder="Din efternavn..." name="Lastname" id="lastnameField" action={setLastname} />
                     <InputField type="text" placeholder="Din addresse..." name="Address" id="addressField" action={setAddress} />
                     <InputField type="text" placeholder="Din by..." name="city" id="cityField" action={setCity} />
                     <InputField type="text" placeholder="Din postnummer..." name="zip" id="zipField" action={setZip} />
-                    <InputField type="radio" name="newsLetter" id="newsLetterFieldYes" value="yes" action={setNewsLetter} />
-                    <InputField type="radio" name="notification" id="notificationFieldYes" value="yes" action={setNotification} />
+                    <InputField type="email" placeholder="Din email..." name="Email" id="emailField" action={setEmail} />
+                    <InputField type="checkbox" name="newsLetter" id="newsLetterFieldYes" labelText="Jeg ønsker at modtage nyheder om klima-indsatsen, gode tilbud, ekslusive deals og lignende promoverings-mails fra den grønne avis og samarbejds-parnere?" action={setNewsLetter} />
+                    <InputField type="checkbox" name="notification" id="notificationFieldYes" labelText="Jeg ønsker at modtage notifikationer i form af emails når der sker en opdatering på en af mine annoncer eller jeg modtager en ny henvendelse?" action={setNotification} />
                 </form>
-                <button onClick={deleteUser}>slet profil</button>
-                <button onClick={updateUser}>gem ændringer</button>
+                <button onClick={() => deleteUser()}>slet profil</button>
+                <button onClick={() => updateUser()}>gem ændringer</button>
                 {signUpMessage && <p>{signUpMessage}</p>}
                 {error && <p style={{ color: "red" }}>{error}</p>}
             </div>
