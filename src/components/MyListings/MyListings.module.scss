@@ -37,3 +37,22 @@
         }
     }
 }
+
+@media (max-width: 700px){
+    .myListingStyle{
+        .myListingContainer {
+            .myListingName {
+                .greenName {
+                    align-items: center;
+                       padding: 5px;
+                    h3{
+                        font-size: 13px; 
+                    }
+                    .priceStyle{
+                        font-size: 12px; 
+                    }
+                }
+            }
+        }
+    }
+}

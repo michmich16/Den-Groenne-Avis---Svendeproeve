@@ -7,19 +7,84 @@
         font-size: 36px;
         font-weight: 400;
         padding: 10px 0;
+        margin: 0;
     }
     img{
         width: 600px;
         height: 600px;
         object-fit: cover;
+        margin: 0;
     }
     p{
         font-size: 14px;
         font-weight: 300;
+        margin: 0;
     }
     h4{
         padding: 10px 0;
         font-size: 20px;
         font-weight: 500;
+        margin: 0;
+    }
+}
+
+@media (max-width: 1024px) {
+    .productDetailsStyle{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: auto;
+        h3{
+            font-size: 32px;
+            font-weight: 400;
+            padding: 10px 0;
+        }
+        img{
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+        }
+        p{
+            font-size: 14px;
+            font-weight: 300;
+        }
+        h4{
+            padding: 10px 0;
+            font-size: 20px;
+            font-weight: 500;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .productDetailsStyle{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: auto;
+        justify-content: center;
+        h3{
+            font-size: 32px;
+            font-weight: 400;
+            padding: 10px 0;
+            margin: auto;
+        }
+        img{
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            margin: auto;
+        }
+        p{
+            font-size: 14px;
+            font-weight: 300;
+            margin: auto;
+        }
+        h4{
+            padding: 10px 0;
+            font-size: 20px;
+            font-weight: 500;
+            margin: auto;
+        }
     }
 }

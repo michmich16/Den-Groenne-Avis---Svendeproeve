@@ -37,3 +37,12 @@
     }
 }
 
+.loginBtnStyle {
+    width: 100px;
+    height: 30px;
+    align-self: flex-end;
+    margin: auto;
+    border: none;
+    background-color: $green;
+    color: $white;
+}

@@ -30,3 +30,13 @@
     background-color: $green;
     color: $white;
 }
+
+.loggedInPage{
+    display: flex;
+    flex-direction: column;
+    button{
+        width: 150px;
+        height: 40px;
+        margin: 10px 0;
+    }
+}

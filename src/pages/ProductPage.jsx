@@ -13,17 +13,23 @@ import { Splitter } from '../components/Splitter/Splitter';
 import s from './PageStyles/ProductPage.module.scss'
 
 export const ProductPage = () => {
+  //useParams til at lave dynamisk value i ${slug}
   const { slug } = useParams()
+    //useGet til at henter api
   const { isLoading: productIsLoading, data: productData, error: productError } = useGet(`http://localhost:4242/products/${slug}`)
+    // alle usestate til at holde styr på state [gemmer, opdater]
   const [newComment, setNewComment] = useState("")
   const { userToken, userData } = useContext(UserContext);
   const productID = productData?.data?.id;
-  console.log(productData);
+  // console.log(productData);
 
+
+  //submit comment function
   function submitComment() {
     const body = new URLSearchParams();
     body.append("comment", newComment);
 
+    //sender en post request til API med access token i header
     const options = {
       method: "POST",
       body: body,
@@ -36,7 +42,9 @@ export const ProductPage = () => {
       .catch(error => console.log('error', error));
   }
 
+  //delete en comment som passer med id
   function deleteComment(id) {
+    //sender en deletet crud request med access token i header
     const options = {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${userToken}` },

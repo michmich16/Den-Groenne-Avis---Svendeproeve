@@ -11,14 +11,14 @@ import s from "./PageStyles/AccountPage.module.scss";
 
 export const AccountPage = () => {
   const { userToken, userData } = useContext(UserContext);
-  const { isLoading: myListingsIsLoading, data: myListingsData } = useGet(
-    "http://localhost:4242/products",
-    { headers: { Authorization: `Bearer ${userToken}` } }
-  );
+  //useGet henter data
+  const { isLoading: myListingsIsLoading, data: myListingsData } = useGet("http://localhost:4242/products");
   const body = new URLSearchParams();
+  //state som skifter mellem min profil og min listing
   const [activeComponent, setActiveComponent] = useState("profile");
   const navigate = useNavigate();
 
+  //delete request
   function deleteListing(id) {
     const options = {
       method: 'DELETE',
@@ -38,6 +38,7 @@ export const AccountPage = () => {
       {userToken ? (
         <MarginContainer>
           <Splitter marginTop={20} marginBottom={10} width={90} />
+          {/* buttons som toggles hvilke sider skal vises på pagen*/}
           <div className={s.pageSwitcher}>
             <button
               onClick={() => setActiveComponent("profile")}
@@ -80,7 +81,7 @@ export const AccountPage = () => {
         </MarginContainer>
       ) : (
         <MarginContainer>
-          <div>
+          <div className={s.notLoggedInDiv}>
             <p>AccountPage not logged in</p>
             <p>
               Tryk <a href="">her</a> for at gå til en login side

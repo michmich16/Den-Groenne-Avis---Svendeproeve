@@ -16,6 +16,7 @@ export const NewProductPage = () => {
   const [categoryId, setCategoryId] = useState("")
   const navigate = useNavigate();
 
+  //submit produkt som sender en POST req til API
   function submitNewproduct() {
     const body = new URLSearchParams();
     body.append("name", name)
@@ -84,8 +85,10 @@ export const NewProductPage = () => {
         </>
       ) : (
         <MarginContainer>
-          <div> <h2>Du skal logge ind først!!!</h2> </div>
+          <h2>Du skal logge ind først.</h2> 
+          <p>Du skal logge ind for at lave en ny annonce.</p>
           <button className={s.loginBtnStyle} onClick={() => navigate('/login')}>Gå til login</button>
+          
         </MarginContainer>
 
       )}

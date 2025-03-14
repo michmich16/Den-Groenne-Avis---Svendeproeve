@@ -11,10 +11,11 @@ import { Splitter } from '../components/Splitter/Splitter'
 
 export const HomePage = () => {
 
+  // useget til at henter data fra api
   const { isLoading: productIsLoading, data: productdata, error: productError } = useGet('http://localhost:4242/products')
   const { isLoading: categoryIsLoading, data: categorydata, error: categoryError } = useGet('http://localhost:4242/categories')
 
-
+//ramdom array som randomly skifter produkter i array
   const randomArray = (array) => {
     return array.sort(() => Math.random() - 0.5);
   };

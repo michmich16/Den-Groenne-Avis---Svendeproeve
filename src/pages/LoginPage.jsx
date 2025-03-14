@@ -10,6 +10,7 @@ import { GridContainer } from '../components/GridContainer/GridContainer';
 import { Splitter } from '../components/Splitter/Splitter';
 
 export const LoginPage = () => {
+  //usestate til at holde styr på data
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -30,10 +31,10 @@ export const LoginPage = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.data.access_token) {
-          setUserData(data.data); // Save user data
-          setUserToken(data.data.access_token); // Save the token
+          setUserData(data.data); // gem data
+          setUserToken(data.data.access_token); // gem token
           setLoginMessage("Du er nu logget ind");
-          setError(""); // Clear any previous error
+          setError(""); // Clear tiligere error
         } else {
           setLoginMessage("Forkert brugernavn eller password");
         }
@@ -41,13 +42,13 @@ export const LoginPage = () => {
       })
       .catch(() => {
         setError("Noget gik galt, prøv igen senere");
-        setLoginMessage(""); // Clear any previous message
+        setLoginMessage(""); // Clear tiligere login besked
       });
   }
 
 
-
-  const logOut = () => {
+//logud sletter userData og userToken fra session storage
+  function logOut() {
     setUserData(null);
     setUserToken(null);
     sessionStorage.removeItem("userData");
@@ -58,9 +59,10 @@ export const LoginPage = () => {
   return (
     <>
       <MarginContainer>
-        {userToken ? ( //turnary operator, hvis userToker er der så vis Admininstator component ellers vis login form med InputBox
-          <div>
-            <h2>Du er nu logget ind <button onClick={logOut}>Logud</button></h2>
+        {userToken ? ( //turnary operator, hvis userToker er der så render Admininstator component ellers render login form med InputBox
+          <div className={s.loggedInPage}>
+            <h2>Du er nu logget ind </h2>
+            <button onClick={() => logOut()}>Logud</button>
             <button onClick={() => { navigate('/min-konto') }}>Gå til din konto</button>
           </div>
         ) : (
