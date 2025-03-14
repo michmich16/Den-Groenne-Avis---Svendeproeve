@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import s from './Dropdown.module.scss';
 
 export const Dropdown = () => {
+  //henter kategoriet fra API
   const { isLoading, data, error } = useGet('http://localhost:4242/categories');
   const [selectedCategory, setSelectedCategory] = useState("");
   const navigate = useNavigate();
@@ -11,11 +12,13 @@ export const Dropdown = () => {
 
   // resetter dropdown med at tjekker path på url
   useEffect(() => {
+    // tjekker url (pathname)
     if (location.pathname === "/") {
       setSelectedCategory(""); // sætter dropdown tilbage til "Vælg Kategori"
     }
   }, [location.pathname]);
 
+  //sender value til slug
   const handleChange = (event) => {
     const slug = event.target.value;
     setSelectedCategory(slug);
