@@ -8,12 +8,14 @@ import { CategoryFilter } from '../components/CategoryFilter/CategoryFilter';
 import { Splitter } from '../components/Splitter/Splitter';
 import { Pagination } from '../components/Pagination/Pagination';
 import s from './PageStyles/CategoriesPage.module.scss'
+import { usePageTitle } from '../hooks/usePageTitle';
 
 export const CategoriesPage = () => {
   const { slug } = useParams();
   const { isLoading: categoryIsLoading, data: categoryData, error: categoryError } = useGet(
     `http://localhost:4242/products/category/${slug}`
     );
+    console.log(categoryData);
     const [currentPage, setCurrentPage] = useState(1); // holder styr på hvor man er i pagination page
     const productsPerPage = 2; // sætter max produkter per page
     // Beregn rækken af ​​produkter, der skal vises på den aktuelle side
@@ -21,7 +23,8 @@ export const CategoriesPage = () => {
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage; // Index af den firste produkt på pagen
     // Get produkter til den nuværende page
     const currentProducts = categoryData?.data.slice(indexOfFirstProduct, indexOfLastProduct);
-
+    
+    usePageTitle(`${slug} - Den Grønne Avis`);
 
 
   return (

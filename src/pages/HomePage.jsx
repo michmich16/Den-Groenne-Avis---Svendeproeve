@@ -8,9 +8,10 @@ import { Banner } from '../components/Banner/Banner'
 import { CategoryCards } from '../components/CategoryCards/CategoryCards'
 import { Donation } from '../components/Donation/Donation'
 import { Splitter } from '../components/Splitter/Splitter'
+import { usePageTitle } from '../hooks/usePageTitle';
 
 export const HomePage = () => {
-
+  usePageTitle('Home - Den Grønne Avis');
   // useget til at henter data fra api
   const { isLoading: productIsLoading, data: productdata, error: productError } = useGet('http://localhost:4242/products')
   const { isLoading: categoryIsLoading, data: categorydata, error: categoryError } = useGet('http://localhost:4242/categories')
@@ -22,7 +23,7 @@ export const HomePage = () => {
   return (
     <>
       <MarginContainer>
-        <Splitter marginTop={20} marginBottom={10} width={90}/>
+        <Splitter marginTop={20} marginBottom={10} width={100}/>
         <SectionTitle title="Udvalgte Produkter" padding="1rem 0 1rem 0 "/>
         <GridContainer columns="1fr 1fr 1fr 1fr 1fr 1fr" tabletColumns='1fr 1fr 1fr' mobileColumns=' 1fr 1fr'>
           {!productIsLoading && productdata?.data &&
@@ -36,13 +37,13 @@ export const HomePage = () => {
                 />
               ))}
         </GridContainer>
-        <Splitter marginTop={30} marginBottom={30} width={90}/>
+        <Splitter marginTop={30} marginBottom={30} width={100}/>
         <Banner
           img='./images/banner_image4.jpg'
           title='Den Grønne Avis'
           text='Vi går forest i kampen om klimaet ved at give 2 kr. til klima-venlige formål, hver gang du handler brugt på Den Grønne Avis'
         />
-        <Splitter marginTop={30} marginBottom={30} width={90}/>
+        <Splitter marginTop={30} marginBottom={30} width={100}/>
         <SectionTitle title="Populære Kategorier" padding="0 0 1rem 0 "/>
         <GridContainer columns="1fr 1fr 1fr 1fr 1fr 1fr" tabletColumns='1fr 1fr 1fr' mobileColumns=' 1fr 1fr'>
           {!categoryIsLoading && categorydata?.data &&
@@ -56,7 +57,7 @@ export const HomePage = () => {
                 />
               ))}
         </GridContainer>
-        <Splitter marginTop={40} marginBottom={30} width={90}/>
+        <Splitter marginTop={40} marginBottom={30} width={100}/>
         <GridContainer columns="1fr 1fr" tabletColumns='1fr' mobileColumns='1fr'>
           <Donation
             img='./images/banner_image2.jpg'

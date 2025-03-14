@@ -7,8 +7,10 @@ import { MarginContainer } from '../components/MarginContainer/MarginContainer';
 import { SectionTitle } from '../components/SectionTitle/SectionTitle';
 import { Splitter } from '../components/Splitter/Splitter';
 import s from './PageStyles/SignUpPage.module.scss';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 export const SignUpPage = () => {
+  usePageTitle('Sign Up - Den Grønne Avis');
   // alle usestate til at holde styr på state [gemmer, opdater]
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,7 +25,7 @@ export const SignUpPage = () => {
 
   const navigate = useNavigate();
 
-  // validation
+  // validation & regex
   const validateInputs = () => {
     const newErrors = {};
     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;

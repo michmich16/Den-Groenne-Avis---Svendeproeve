@@ -14,6 +14,7 @@ export function useGet(url, token, param) {
       .catch((err) => setError(err))
       .finally(() => setIsLoading(false));
   }, [url, param]);
+  // dependencie array som opdater hver gange der er en ny data
 
   return { data, error, isLoading };
 }

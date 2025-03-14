@@ -8,8 +8,10 @@ import { MyListing } from "../components/MyListings/MyListings";
 import { Splitter } from "../components/Splitter/Splitter";
 import { useGet } from "../hooks/useGet";
 import s from "./PageStyles/AccountPage.module.scss";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 export const AccountPage = () => {
+  usePageTitle(`Min Konto - Den Grønne Avis`);
   const { userToken, userData } = useContext(UserContext);
   //useGet henter data
   const { isLoading: myListingsIsLoading, data: myListingsData } = useGet("http://localhost:4242/products");

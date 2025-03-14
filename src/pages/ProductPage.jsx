@@ -11,6 +11,7 @@ import { SectionTitle } from '../components/SectionTitle/SectionTitle';
 import { UserContext } from '../context/UserContext';
 import { Splitter } from '../components/Splitter/Splitter';
 import s from './PageStyles/ProductPage.module.scss'
+import { usePageTitle } from '../hooks/usePageTitle';
 
 export const ProductPage = () => {
   //useParams til at lave dynamisk value i ${slug}
@@ -22,7 +23,7 @@ export const ProductPage = () => {
   const { userToken, userData } = useContext(UserContext);
   const productID = productData?.data?.id;
   // console.log(productData);
-
+  usePageTitle(`Bilig ${productData?.data?.name} - Den Grønne Avis`);
 
   //submit comment function
   function submitComment() {

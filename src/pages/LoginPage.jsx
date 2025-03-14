@@ -8,8 +8,10 @@ import { useNavigate } from "react-router-dom";
 import { Donation } from '../components/Donation/Donation';
 import { GridContainer } from '../components/GridContainer/GridContainer';
 import { Splitter } from '../components/Splitter/Splitter';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 export const LoginPage = () => {
+  usePageTitle('Login - Den Grønne Avis');
   //usestate til at holde styr på data
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

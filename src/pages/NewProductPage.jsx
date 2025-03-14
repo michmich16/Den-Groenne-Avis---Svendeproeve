@@ -6,9 +6,12 @@ import { SectionTitle } from "../components/SectionTitle/SectionTitle";
 import { MarginContainer } from "../components/MarginContainer/MarginContainer";
 import { Splitter } from "../components/Splitter/Splitter";
 import s from './PageStyles/NewProductPage.module.scss'
+import { usePageTitle } from "../hooks/usePageTitle";
 
 export const NewProductPage = () => {
+  usePageTitle('Opret Annonce - Den Grønne Avis');
   const { userData, userToken, setUserData, setUserToken } = useContext(UserContext);
+  // alle de useStatwe som skal holde styr på data
   const [name, setName] = useState("")
   const [image, setImage] = useState("")
   const [description, setDescription] = useState("")
@@ -19,12 +22,13 @@ export const NewProductPage = () => {
   //submit produkt som sender en POST req til API
   function submitNewproduct() {
     const body = new URLSearchParams();
+    //append body data til api
     body.append("name", name)
     body.append("image", image)
     body.append("description", description)
     body.append("price", price)
     body.append("category_id", categoryId)
-
+    //send POST request med header + access_token
     const options = {
       method: 'POST',
       body: body,
@@ -38,6 +42,7 @@ export const NewProductPage = () => {
   }
   return (
     <>
+    {/* turnary oparator hvis er der userToken så render den her ellers hvis ikke så render den ned under */}
       {userToken ? (
         <>
           <MarginContainer>
