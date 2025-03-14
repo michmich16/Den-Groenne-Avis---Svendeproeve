@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 export const Logo = () =>{
     return(
         <>
-        <NavLink to={'/'}>
+        <NavLink className={s.logoStyle} to={'/'}>
             <h1>Den Grønne <span>Avis</span></h1>
         </NavLink>
         </>

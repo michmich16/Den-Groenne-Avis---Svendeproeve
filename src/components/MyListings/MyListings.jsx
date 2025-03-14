@@ -7,7 +7,7 @@ export const MyListing = ({ name, price, description, img }) => {
             <section className={s.myListingStyle}>
                 <div className={s.myListingContainer}>
                     <div className={s.myListingName}>
-                        <div><h3>{name}</h3><h4>{price}</h4></div>
+                        <div className={s.greenName}><h3>{name}</h3><h3>Pris: {price} DKK</h3></div>
                         <div><p>{description}</p></div>
                     </div>
                     <div  className={s.myListingImg}>

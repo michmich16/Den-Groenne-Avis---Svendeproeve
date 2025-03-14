@@ -12,9 +12,8 @@ export const CommentInput = ({ name, placeholder, labelText, action, id }) => {
                 id={id}
                 name={name}
                 placeholder={placeholder}
-                cols="30"
-                rows="10"
                 onChange={(event) => onInputChange(event)}
+                className={s.commentInputStyle}
             ></textarea>
         </>
     )

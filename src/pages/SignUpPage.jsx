@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom'
 import { Donation } from '../components/Donation/Donation'
 import { GridContainer } from '../components/GridContainer/GridContainer'
 import { MarginContainer } from '../components/MarginContainer/MarginContainer'
+import { SectionTitle } from '../components/SectionTitle/SectionTitle'
+import { Splitter } from '../components/Splitter/Splitter'
+import s from './PageStyles/SignUpPage.module.scss';
 
 export const SignUpPage = () => {
   const [email, setEmail] = useState("");
@@ -52,63 +55,80 @@ export const SignUpPage = () => {
   return (
     <>
       <MarginContainer>
-        <form>
-          <InputField
-            type="email"
-            placeholder="Din email..."
-            name="Email"
-            id="emailField"
-            action={setEmail}
-          />
-          <InputField
-            type="password"
-            placeholder="Din password..."
-            name="password"
-            id="passwordField"
-            action={setPassword}
-          />
-          <InputField
-            type="text"
-            placeholder="Din fornavn..."
-            name="Firstname"
-            id="firstnameField"
-            action={setFirstname}
-          />
-          <InputField
-            type="text"
-            placeholder="Din efternavn..."
-            name="Lastname"
-            id="lastnameField"
-            action={setLastname}
-          />
-          <InputField
-            type="text"
-            placeholder="Din addresse..."
-            name="Address"
-            id="addressField"
-            action={setAddress}
-          />
-          <InputField
-            type="text"
-            placeholder="Din by..."
-            name="city"
-            id="cityField"
-            action={setCity}
-          />
-          <InputField
-            type="text"
-            placeholder="Din postnummer..."
-            name="zip"
-            id="zipField"
-            action={setZip}
-          />
+        <Splitter marginTop={20} marginBottom={10} width={90} />
+        <SectionTitle title="Opret en konto" textAlign='center' fontSize={30} fontWeight='300' padding="10px 0" />
+        <form className={s.formStyle}>
+          <div>
+            <InputField
+              type="email"
+              placeholder="Din email..."
+              name="Email"
+              id="emailField"
+              labelText="Email"
+              action={setEmail}
+            />
+            <InputField
+              type="password"
+              placeholder="Din password..."
+              name="password"
+              id="passwordField"
+              labelText="Password"
+              action={setPassword}
+            />
+            <InputField
+              type="text"
+              placeholder="Din fornavn..."
+              name="Firstname"
+              id="firstnameField"
+              labelText="Fornavn"
+              action={setFirstname}
+            />
+            <InputField
+              type="text"
+              placeholder="Din efternavn..."
+              name="Lastname"
+              id="lastnameField"
+              labelText="Efternavn"
+              action={setLastname}
+            />
+            <InputField
+              type="text"
+              placeholder="Din addresse..."
+              name="Address"
+              id="addressField"
+              labelText="Adresse"
+              action={setAddress}
+            />
+            <InputField
+              type="text"
+              placeholder="Din by..."
+              name="city"
+              id="cityField"
+              labelText="By"
+              action={setCity}
+            />
+            <InputField
+              type="text"
+              placeholder="Din postnummer..."
+              name="zip"
+              id="zipField"
+              labelText="Postnummer"
+              action={setZip}
+            />
+          </div>
+          <p>Har du allerede en konto hos os? Klik <a onClick={() => navigate('/login')}>her</a> for at vende tilbage til login</p>
         </form>
-        <p>Har du allerede en konto hos os? Klik <a onClick={() => navigate('/login')}>her</a> for at vende tilbage til login</p>
-        <input type="checkbox" />
-        <button onClick={submitData}>Opret</button>
+          <GridContainer columns='1fr 1fr' tabletColumns='1fr' mobileColumns='1fr'>
+            <div className={s.checkBoxStyle}>
+              <input type="checkbox" />
+              <label>Jeg har læst og forstået de gældende betingelser for oprettelse af kundekonto og brug af denne side</label>
+            </div>
+            <button className={s.loginBtnStyle} onClick={() => submitData()}>Opret</button>
+          </GridContainer>
         {error && <p>{error}</p>}
         {signUpMessage && <p>{signUpMessage}</p>}
-        <GridContainer columns="1fr 1fr">
+        <Splitter marginTop={20} marginBottom={10} width={90} />
+        <GridContainer columns="1fr 1fr" tabletColumns='1fr' mobileColumns='1fr'>
           <Donation
             img='./images/banner_image2.jpg'
             title="Donationer til Dato"

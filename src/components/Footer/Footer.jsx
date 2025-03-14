@@ -1,11 +1,10 @@
 import React from 'react'
 import s from './Footer.module.scss'
-import { GridContainer } from '../GridContainer/GridContainer'
+
 
 export const Footer = () => {
   return (
     <footer className={s.footerStyle}>
-    <GridContainer columns='1fr 1fr 1fr' gap='1rem'>
     <ul>
       <li>
         <h4>Nyhedsbrev</h4>
@@ -14,8 +13,9 @@ export const Footer = () => {
         Vil du være med på den grønne front? Tilmeld dig vores nyhedsbrev og
         få de seneste klima opdateringer direkte i din indbakke
       </li>
-      <li>
+      <li className={s.subscribe}>
         <input type="text" />
+        <button>Tilmeld</button>
       </li>
     </ul>
     <ul>
@@ -42,7 +42,6 @@ export const Footer = () => {
         </a>
       </li>
     </ul>
-    </GridContainer>
   </footer>
   )
 }

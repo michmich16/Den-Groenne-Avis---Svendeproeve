@@ -1,1 +1,18 @@
 @import '../../assets/helper/Helper.module.scss';
+
+.commentStyle{
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    p{
+        color: $black;
+        font-weight: 200;
+        font-size: 12px;
+    }
+    .commentBox{
+        background-color: $white;
+        border: 1px solid $green;
+        min-height: 60px;
+        padding: 10px 5px;
+    }
+}

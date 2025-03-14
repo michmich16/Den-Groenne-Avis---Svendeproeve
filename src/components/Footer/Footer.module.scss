@@ -1,13 +1,62 @@
 @import '../../assets/helper/Helper.module.scss';
 
-footer {
+.footerStyle {
     display: grid;
     grid-template-columns: 2fr 1fr 2fr;
-    height: 196px;
+    min-height: 120px;
     background-color: $lime;
-    div{
-        h4{
-            color: $white;
+    padding: 20px 30px;
+    gap: 1rem;
+    justify-content: center;
+
+    ul {
+        width: 70%;
+        padding-bottom: 10px;
+        margin: auto;
+
+        li {
+            list-style: none;
+            font-size: 12px;
+
+            h4 {
+                color: white;
+                font-size: 20px !important;
+                font-weight: 400;
+                padding-bottom: 20px;
+            }
+
+            a {
+                color: $white;
+                padding-top: 10px;
+            }
+        }
+
+        .subscribe {
+            display: flex;
+            padding-top: 10px;
+
+            input {
+                width: 70%;
+                height: 30px;
+            }
+
+            button {
+                background-color: $green;
+                color: $white;
+                border: none;
+                width: 100px;
+            }
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .footerStyle {
+        grid-template-columns: 1fr;
+        text-align: center;
+        margin: auto;
+        ul{
+            margin: auto;
         }
     }
 }

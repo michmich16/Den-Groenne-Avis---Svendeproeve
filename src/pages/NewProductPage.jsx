@@ -4,6 +4,8 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SectionTitle } from "../components/SectionTitle/SectionTitle";
 import { MarginContainer } from "../components/MarginContainer/MarginContainer";
+import { Splitter } from "../components/Splitter/Splitter";
+import s from './PageStyles/NewProductPage.module.scss'
 
 export const NewProductPage = () => {
   const { userData, userToken, setUserData, setUserToken } = useContext(UserContext);
@@ -38,8 +40,10 @@ export const NewProductPage = () => {
       {userToken ? (
         <>
           <MarginContainer>
-            <SectionTitle title="Opret ny annoce" text='Her kan du opret en ny annonce Du har mulighed for at slette dine annoncer igen under "min konto" siden' />
-            <form>
+            <Splitter marginTop={20} marginBottom={10} width={90} />
+            <SectionTitle title="Opret ny annoce" textAlign="center" fontSize="32px" padding="1rem 0" />
+            <SectionTitle text='Her kan du opret en ny annonce Du har mulighed for at slette dine annoncer igen under "min konto" siden' textAlign="center" padding="1rem 0" />
+            <form className={s.formStyle}>
               <InputField
                 labelText="Titel"
                 type="text"
@@ -54,10 +58,10 @@ export const NewProductPage = () => {
               />
 
               <InputField
-                labelText="Annoce tekst"
                 type="text"
                 placeholder="Skriv en annonce tekst her der beskriver produktet"
                 action={setDescription}
+                labelText="Annoce tekst"
               />
               <InputField
                 labelText="URL til billede"
@@ -72,14 +76,18 @@ export const NewProductPage = () => {
                 action={setPrice}
               />
             </form>
-            <button onClick={() => submitNewproduct()}>Opret</button>
+            <div className={s.buttonBox}>
+              <button className={s.loginBtnStyle} onClick={() => submitNewproduct()}>Opret</button>
+            </div>
+
           </MarginContainer>
         </>
       ) : (
-        <div>Du skal logge ind først!!!
+        <MarginContainer>
+          <div> <h2>Du skal logge ind først!!!</h2> </div>
+          <button className={s.loginBtnStyle} onClick={() => navigate('/login')}>Gå til login</button>
+        </MarginContainer>
 
-          <button onClick={() => navigate('/login')}>Gå til login</button>
-        </div>
       )}
     </>
   )

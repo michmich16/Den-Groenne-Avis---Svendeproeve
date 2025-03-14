@@ -19,12 +19,26 @@
         Left: 50%;
         Top: 50%;
         Transform: translate(-50%, -50%);
+        width: 70%;
         text-align: start;
+        font-weight: 400;
         h2 {
             color: $white;
+            padding: 5px 0;
+            font-weight: 400;
         }
         p {
             color: $white;
+            padding: 5px 0;
+            font-weight: 400;
+        }
+        .moneyStyle{
+            font-size: 30px;
+            color: $lime;
+            text-align: end;
+        }
+        .endingStyle{
+            font-size: 11px;
         }
     }
 }

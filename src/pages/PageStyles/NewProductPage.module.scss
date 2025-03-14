@@ -1,0 +1,39 @@
+@import '../../assets/helper/Helper.module.scss';
+
+.formStyle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+
+  
+    div {
+        margin: auto;
+        margin-bottom: 10px;
+        max-width: 400px; 
+        width: 100%;    
+    }
+    input {
+        width: 100%;     
+    }
+
+    a {
+        color: $lime;
+    }
+
+}
+.buttonBox{
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    .loginBtnStyle {
+        width: 100px;
+        height: 30px;
+        align-self: flex-end;
+        margin: auto;
+        border: none;
+        background-color: $green;
+        color: $white;
+    }
+}
+

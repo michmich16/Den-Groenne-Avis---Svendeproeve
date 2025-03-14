@@ -6,11 +6,12 @@
     justify-content: center;
     margin: auto;
 
+  
     div {
         margin: auto;
         margin-bottom: 10px;
-        max-width: 400px;
-        width: 100%;     
+        max-width: 400px; 
+        width: 100%;    
     }
     input {
         width: 100%;     
@@ -29,4 +30,13 @@
     border: none;
     background-color: $green;
     color: $white;
+}
+.checkBoxStyle{
+    display: flex;
+    flex-direction: row;
+    input{
+        border: 2px solid $green;
+        width: 22px;
+        height: 22px;
+    }
 }

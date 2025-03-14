@@ -1,0 +1,23 @@
+@import '../../assets/helper/Helper.module.scss';
+
+.inputFieldStyle{
+    max-width: 570px;
+    height: 45px;
+    border: 1px solid $green;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    align-items: center;
+    background-color: #EDECEC;
+    .inputStyle{
+        width: 90%;
+        height: 100%;
+        background-color: #EDECEC;
+        border: none;
+        padding: 0 10px;
+    }
+    img{
+        width: 40px;
+        height: 40px;
+    }
+}

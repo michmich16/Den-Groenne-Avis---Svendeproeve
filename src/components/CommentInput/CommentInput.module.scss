@@ -1,0 +1,8 @@
+@import '../../assets/helper/Helper.module.scss';
+
+.commentInputStyle{
+    height: 150px;
+    resize: none;
+    border: 1.5px solid $lime;
+    padding: 10px;
+}

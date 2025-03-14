@@ -7,6 +7,7 @@ import { SectionTitle } from '../components/SectionTitle/SectionTitle'
 import { Banner } from '../components/Banner/Banner'
 import { CategoryCards } from '../components/CategoryCards/CategoryCards'
 import { Donation } from '../components/Donation/Donation'
+import { Splitter } from '../components/Splitter/Splitter'
 
 export const HomePage = () => {
 
@@ -20,8 +21,9 @@ export const HomePage = () => {
   return (
     <>
       <MarginContainer>
-        <SectionTitle title="Udvalgte Produkter" />
-        <GridContainer columns="1fr 1fr 1fr 1fr 1fr 1fr">
+        <Splitter marginTop={20} marginBottom={10} width={90}/>
+        <SectionTitle title="Udvalgte Produkter" padding="1rem 0 1rem 0 "/>
+        <GridContainer columns="1fr 1fr 1fr 1fr 1fr 1fr" tabletColumns='1fr 1fr 1fr' mobileColumns=' 1fr 1fr'>
           {!productIsLoading && productdata?.data &&
             randomArray(productdata.data)
               .slice(0, 6).map((data) => (
@@ -33,13 +35,15 @@ export const HomePage = () => {
                 />
               ))}
         </GridContainer>
+        <Splitter marginTop={30} marginBottom={30} width={90}/>
         <Banner
           img='./images/banner_image4.jpg'
           title='Den Grønne Avis'
           text='Vi går forest i kampen om klimaet ved at give 2 kr. til klima-venlige formål, hver gang du handler brugt på Den Grønne Avis'
         />
-        <SectionTitle title="Populære Kategorier" />
-        <GridContainer columns="1fr 1fr 1fr 1fr 1fr 1fr">
+        <Splitter marginTop={30} marginBottom={30} width={90}/>
+        <SectionTitle title="Populære Kategorier" padding="0 0 1rem 0 "/>
+        <GridContainer columns="1fr 1fr 1fr 1fr 1fr 1fr" tabletColumns='1fr 1fr 1fr' mobileColumns=' 1fr 1fr'>
           {!categoryIsLoading && categorydata?.data &&
             randomArray(categorydata.data)
               .slice(0, 6).map((data) => (
@@ -51,7 +55,8 @@ export const HomePage = () => {
                 />
               ))}
         </GridContainer>
-        <GridContainer columns="1fr 1fr">
+        <Splitter marginTop={40} marginBottom={30} width={90}/>
+        <GridContainer columns="1fr 1fr" tabletColumns='1fr' mobileColumns='1fr'>
           <Donation
             img='./images/banner_image2.jpg'
             title="Donationer til Dato"

@@ -9,6 +9,8 @@ import { Comments } from '../components/Comments/Comments';
 import { CommentInput } from '../components/CommentInput/CommentInput';
 import { SectionTitle } from '../components/SectionTitle/SectionTitle';
 import { UserContext } from '../context/UserContext';
+import { Splitter } from '../components/Splitter/Splitter';
+import s from './PageStyles/ProductPage.module.scss'
 
 export const ProductPage = () => {
   const { slug } = useParams()
@@ -50,6 +52,7 @@ export const ProductPage = () => {
   return (
     <>
       <MarginContainer>
+        <Splitter marginTop={20} marginBottom={10} width={90} />
         <GridContainer columns="1fr 3fr">
           <CategoryFilter />
           <ProductDetails
@@ -59,23 +62,29 @@ export const ProductPage = () => {
             price={productData?.data?.price}
           />
         </GridContainer>
-        <SectionTitle title="Kontakt Sælger" />
-        <CommentInput
-          name="newComment"
-          placeholder="Skriv en besked til en sælger"
-          action={setNewComment}
-        />
-        <button onClick={() => submitComment()}>send</button>
-        {!productIsLoading &&
-          productData?.data?.comments?.map((item) => (
-            <div key={item.id}>
-              <Comments
-                text={item.comment}
-                name={`${item.user?.firstname} (${new Date(item.createdAt).toLocaleString()})`}
-              />
-                <button onClick={() => deleteComment(item.id)}>slet kommentar</button>
-            </div>
-          ))}
+        <Splitter marginTop={20} marginBottom={10} width={90} />
+
+        <SectionTitle title="Kontakt Sælger" textAlign='center' color={"green"} fontSize={30} fontWeight="200" padding="20px 0"/>
+        <section className={s.commentSection}>
+          <CommentInput
+            name="newComment"
+            placeholder="Skriv en besked til en sælger"
+            action={setNewComment}
+          />
+          <button className={s.commentBtn} onClick={() => submitComment()}>send</button>
+        </section>
+        <div className={s.commentFeed}>
+          {!productIsLoading &&
+            productData?.data?.comments?.map((item) => (
+              <>
+                <Comments
+                  text={item.comment}
+                  name={`${item.user?.firstname} (${new Date(item.createdAt).toLocaleString()})`}
+                />
+                <button className={s.deleteCommentBtn} onClick={() => deleteComment(item.id)}>slet kommentar</button>
+              </>
+            ))}
+        </div>
 
 
 

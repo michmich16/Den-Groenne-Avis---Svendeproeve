@@ -21,3 +21,22 @@ nav{
             }
     }
 }
+
+@media (max-width: 700px) {
+    nav{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        padding-top: 1rem;
+        button{
+            margin: 0;
+            width: 120px;
+        }
+        span{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+    }
+
+}

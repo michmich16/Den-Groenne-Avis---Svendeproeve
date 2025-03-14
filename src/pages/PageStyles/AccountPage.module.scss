@@ -1,0 +1,42 @@
+@import "../../assets/helper/Helper.module.scss";
+
+.pageSwitcher {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .activeButton {
+    background-color: green;
+    color: white;
+  }
+
+  .inactiveButton {
+    background-color: white;
+    color: green;
+    border: 1px solid green;
+  }
+}
+
+.buttonBox{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 10px;
+    button{
+        background-color: transparent;
+        border: none;
+        margin: 0 10px;
+    }
+    button:nth-child(2){
+       color:#952E0D;
+    }
+}

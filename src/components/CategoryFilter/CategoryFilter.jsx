@@ -8,8 +8,8 @@ export const CategoryFilter = () => {
 
     return (
         <>
-            <section>
-                <h5>Alle Kategorier</h5>
+            <section className={s.categoryFilterStyle}>
+                <h4>Alle Kategorier</h4>
                 {!categoryFilterIsLoading && categoryFilterData?.data?.map((category) => (
                     <li key={category.id} onClick={() => navigate(`/products/category/${category.slug}`)}>
                         {category.name}
